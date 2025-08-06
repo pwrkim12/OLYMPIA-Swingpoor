@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>올림피아수영장</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=v7ha6m7r4p"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <!-- 로고 부분 -->
+            <a href="#" class="logo" onclick="showPage('home'); setActiveNav(this);">
+                <img src="logo.jpg" alt="로고" class="logo-img">
+                <span>올림피아수영장</span>
+            </a>
+
+            <!-- 메인 메뉴 항목들 -->
+            <ul class="nav-menu">
+                <!-- 1번 메뉴: 홈 -->
+                <li><a href="#" onclick="showPage('home'); setActiveNav(this);" class="nav-link active"> 홈 </a></li>
+
+                <!-- 2번 메뉴: 수영장 소개 -->
+                <li><a href="#" onclick="showPage('intro'); setActiveNav(this);" class="nav-link"> 수영장 소개</a></li>
+
+                <!-- 3번 메뉴: 부대시설 소개 -->
+                <li><a href="#" onclick="showPage('facilities'); setActiveNav(this);" class="nav-link">부대시설 소개</a></li>
+
+                <!-- 4번 메뉴: 이용안내 -->
+                <li><a href="#" onclick="showPage('pricing'); setActiveNav(this);" class="nav-link">이용안내</a></li>
+
+                <!-- 6번 메뉴: 공지사항 -->
+                <li><a href="#" onclick="showPage('notice'); setActiveNav(this);" class="nav-link">공지사항</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 1번 페이지: 홈 -->
+        <div id="home" class="page active">
+            <!-- 정보 바 -->
+            <div class="info-bar">
+                <div class="info-content">
+                    <div class="info-text">
+                        <h3>모든 부대 시설은 당일 사용기준으로</h3>
+                        <p class="highlight">숙박은 불가능 합니다.</p>
+                    </div>
+                    <div class="info-schedule">
+                        <div class="schedule-item weekend">
+                            <span class="label">주간 이용 안내</span>
+                            <span class="time">AM10:00 - PM 5:30</span>
+                        </div>
+                        <div class="schedule-item normal">
+                            <span class="label">야간 이용 안내</span>
+                            <span class="time">PM 6:00 - PM 10:30</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 동영상 컨테이너 -->
+            <div class="video-container">
+                <video id="background-video" autoplay muted loop playsinline>
+                    <source src="your-video.mp4" type="video/mp4">
+                    <source src="your-video.webm" type="video/webm">
+                    <p>브라우저가 비디오를 지원하지 않습니다.</p>
+                </video>
+            </div>
+        </div>
+
+        <!-- 2번 페이지: 수영장 소개 -->
+        <div id="intro" class="page">
+            <div class="page-container">
+                <aside class="sidebar">
+                    <ul class="sidebar-menu">
+                        <!-- 2-1번 서브메뉴: 수영장 소개 -->
+                        <li><a href="#" onclick="showContent('intro', 'history')" class="sidebar-link active">수영장 소개</a>
+                        </li>
+
+                        <!-- 2-2번 서브메뉴: 운영 시간표 -->
+                        <li><a href="#" onclick="showContent('intro', 'vision')" class="sidebar-link">운영 시간표</a></li>
+
+                        <!-- 2-3번 서브메뉴: 오시는 길 & 주차안내 -->
+                        <li><a href="#" onclick="showContent('intro', 'awards')" class="sidebar-link">오시는 길 & 주차안내</a>
+                        </li>
+
+                        <!-- 2-4번 서브메뉴: 예약 및 문의 -->
+                        <li><a href="#" onclick="showContent('intro', 'staff')" class="sidebar-link">예약 및 문의</a></li>
+                    </ul>
+                </aside>
+                <div class="content-area">
+                    <div class="content-display" id="intro-content">
+                        <h2>수영장 소개</h2>
+                        <div class="image-slider"
+                            style="position: relative; width: 100%; height: 400px; overflow: hidden; border-radius: 10px; margin-bottom: 20px;">
+                            <div class="slider-track"
+                                style="display: flex; width: 300%; height: 100%; animation: slide 9s infinite;">
+                                <img src="maindoor.jpg"
+                                    style="width: 33.33%; height: 100%; object-fit: cover; object-position: center;">
+                                <img src="maindoor2.jpg"
+                                    style="width: 33.33%; height: 100%; object-fit: cover; object-position: center;">
+                                <img src="maindoor3.jpg"
+                                    style="width: 33.33%; height: 100%; object-fit: cover; object-position: center;">
+                            </div>
+                        </div>
+                        <div style="text-align: center; font-size: 1.1rem; line-height: 2; color: #555; padding: 20px;">
+                            <p style="margin-bottom: 15px;">
+                                <strong>1973년 개장</strong> 이래 <strong>50년이 넘는 시간</strong> 동안 양주 장흥 지역 주민들과 함께해온 전통 있는
+                                수영장입니다.
+                            </p>
+                            <p style="margin-bottom: 15px;">
+                                <strong>성인풀</strong>부터 <strong>어린이풀장</strong>, <strong>유아풀</strong>까지 온 가족이 함께 이용할 수 있도록
+                                다양한 시설을 갖추고 있으며,
+                            </p>
+                            <p>
+                                특히 양주 장흥 지역 <strong>최대 규모의 에어바운스</strong>까지 운영하고 있어 아이들에게 더욱 특별한 추억을 선사합니다.
+                            </p>
+                        </div>
+
+                        <style>
+                            @keyframes slide {
+                                0% {
+                                    transform: translateX(0);
+                                }
+
+                                33.33% {
+                                    transform: translateX(-33.33%);
+                                }
+
+                                66.66% {
+                                    transform: translateX(-66.66%);
+                                }
+
+                                100% {
+                                    transform: translateX(0);
+                                }
+                            }
+                        </style>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3번 페이지: 부대시설 소개 -->
+        <div id="facilities" class="page">
+            <div class="page-container">
+                <aside class="sidebar">
+                    <ul class="sidebar-menu">
+                        <!-- 3-1번 서브메뉴: 평상 배치도 -->
+                        <li><a href="#" onclick="showContent('facilities', 'layout')" class="sidebar-link active">평상
+                                배치도</a></li>
+
+                        <!-- 3-2번 서브메뉴: 성인풀 -->
+                        <li><a href="#" onclick="showContent('facilities', 'adult-pool')" class="sidebar-link">성인풀</a>
+                        </li>
+
+                        <!-- 3-3번 서브메뉴: 어린이풀 -->
+                        <li><a href="#" onclick="showContent('facilities', 'kids-pool')" class="sidebar-link">어린이풀</a>
+                        </li>
+
+                        <!-- 3-4번 서브메뉴: 에어바운스 -->
+                        <li><a href="#" onclick="showContent('facilities', 'airbounce')" class="sidebar-link">에어바운스</a>
+                        </li>
+
+                        <!-- 3-5번 서브메뉴: 매점 -->
+                        <li><a href="#" onclick="showContent('facilities', 'shop')" class="sidebar-link">매점</a></li>
+
+                        <!-- 3-6번 서브메뉴: 주차장 -->
+                        <li><a href="#" onclick="showContent('facilities', 'parking')" class="sidebar-link">주차장</a></li>
+                    </ul>
+                </aside>
+                <div class="content-area">
+                    <div class="content-display" id="facilities-content">
+                        <img src="map3.jpg" alt="평상배치도">
+                        <h2>평상배치도</h2>
+                        <p>A, B, C, D, 파고라 존으로 구성되어 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4번 페이지: 이용안내 -->
+        <div id="pricing" class="page">
+            <div class="page-container">
+                <aside class="sidebar">
+                    <ul class="sidebar-menu">
+                        <!-- 4-1번 서브메뉴: 입장요금 안내 -->
+                        <li><a href="#" onclick="showContent('pricing', 'daily')" class="sidebar-link active">입장요금
+                                안내</a></li>
+
+                        <!-- 4-2번 서브메뉴: 평상요금 안내 -->
+                        <li><a href="#" onclick="showContent('pricing', 'monthly')" class="sidebar-link">평상요금 안내</a>
+                        </li>
+                    </ul>
+                </aside>
+                <div class="content-area">
+                    <div class="content-display" id="pricing-content">
+                        <img src="price1.jpg" alt="입장요금 안내">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6번 페이지: 공지사항 -->
+        <div id="notice" class="page">
+            <div class="notice-container">
+                <div class="notice-list">
+                    <h1 style="text-align: center; color: #dc3545; margin-bottom: 30px;">Q & A</h1>
+
+                    <!-- 공지사항 테이블 -->
+                    <table class="notice-table">
+                        <thead>
+                            <tr>
+                                <th>번호</th>
+                                <th>제목</th>
+                                <th>작성일</th>
+                                <th>조회수</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 공지사항 목록이 여기에 동적으로 추가됩니다 -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 공지사항 상세보기 -->
+                <div class="notice-detail" id="notice-detail" style="display: none;">
+                    <button class="back-btn" onclick="showNoticeList()">← 목록으로</button>
+                    <div class="notice-content">
+                        <h2 id="notice-title"></h2>
+                        <div class="notice-info">
+                            <span id="notice-date"></span>
+                        </div>
+                        <div class="notice-body" id="notice-body"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 올림피아수영장. All rights reserved.</p>
+            <p>대표자 : 권준기 | 업체명: 양주 올림피아 | 사업자등록번호: 824-36-01535</p>
+            <p>주소: 경기도 양주시 장흥면 호국로 176-16 | 전화: 010-4211-5237 | 이메일: yjop.102@gmail.com</p>
+        </div>
+    </footer>
+
+    <!-- 이벤트 팝업 -->
+    <div id="eventPopup" class="popup-overlay">
+        <div class="popup-content">
+            <button class="popup-close" onclick="closePopup()">&times;</button>
+            <div class="popup-image">
+                <img src="event-banner.jpg" alt="이벤트 배너">
+            </div>
+            <div class="popup-footer">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="todayClose">
+                    <span class="checkmark"></span>
+                    오늘 하루 보지 않기
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 공지사항 데이터 (누적식으로 계속 추가 가능)
+        const noticeData = [
+            {
+                id: 1,
+                title: "2025년 성수기 예약 안내",
+                content: "안녕하세요. 올림피아수영장입니다.<br><br>2025년 성수기(7~8월) 예약이 시작되었습니다.<br>미리 예약하시면 더욱 편리하게 이용하실 수 있습니다.<br><br>예약 문의: 010-4211-5237",
+                date: "2025-06-15",
+                views: 0
+            },
+            {
+                id: 2,
+                title: "단체예약시 혜택안내",
+                content: "20명 이상 단체 예약 시 특별 할인을 제공합니다.<br><br>- 자세한 할인 금액은 문의 전화 주시면 안내 도와드리겠습니다, <br><br>사전 예약 필수입니다.",
+                date: "2025-06-17",
+                views: 0
+            },
+            {
+                id: 3,
+                title: "2025년 야간 운영 안내",
+                content: "7월 14일부터 야간 운영을 시작합니다.<br><br>야간 운영시간: 오후 6시 ~ 오후 10시 30분<br>야간 이용료는 별도입니다.<br><br>자세한 문의는 전화주세요.",
+                date: "2025-07-10",
+                views: 0
+            },
+            {
+                id: 4,
+                title: "국군 장병 추가 할인 이벤트",
+                content: "🇰🇷 <strong>국가를 위해 묵묵히 헌신하시는 모든 국군 장병분들께 감사드립니다.</strong> 🇰🇷<br><br>올림피아수영장에서는 우리나라를 지키며 고생하고 계신 국군 장병분들을 위한 특별 할인 이벤트를 진행합니다.<br><br>🎖️ <strong>국군 장병 특별 혜택</strong><br>• 기존 단체 할인 + 평상 이용료 10% 추가 할인<br>• 군복 착용 또는 군인 신분증 제시 시 적용<br>• 가족 동반 시에도 동일 혜택 제공<br><br>⭐ <strong>할인 적용 예시</strong><br>• 20명 이상: 단체할인 금액액 + 평상 10% 추가 할인<br><br>나라를 위해 헌신하시는 국군 장병분들의 잠시나마 편안한 휴식과 즐거운 시간이 되시길 바라며, 언제나 최고의 서비스로 보답하겠습니다.<br><br>🫡 <strong>대한민국 국군 장병 여러분, 항상 감사드리고 응원합니다!</strong><br><br>📞 예약 및 문의: 010-4211-5237<br>※ 사전 예약 시 미리 군인 할인 적용 요청 바랍니다.",
+                date: "2025-08-04",
+                views: 0
+            },
+            {
+                id: 5,
+                title: "올림피아 수영장 징검다리 챌린지 오픈!",
+                content: "🏆 <strong>올림피아수영장 역사상 가장 짜릿한 도전이 시작됩니다!</strong> 🏆<br><br>🎯 <strong>징검다리 에어바운스 챌린지 EVENT</strong><br><br>💰 <strong>상금 안내</strong><br>• 스타트 상금: 50만원 💵<br>• 최대 누적 상금: 100만원 💰<br>• 도전 참가비: 5,000원/회<br><br>⏰ <strong>이벤트 일정</strong><br>• 시작일: 2025년 8월 16일<br>• 진행 시간: 매일 오후 12시 30분<br>• 종료: 시즌 마감까지<br><br>🎮 <strong>게임 방식</strong><br>• 7단계 에어바운스 징검다리를 성공적으로 완주하면 상금 획득!<br>• 참가비는 상금에 누적되어 최대 100만원까지 증가!<br>• 실패 시에도 재도전 기회는 무제한!<br><br>🔥 <strong>도전자를 기다립니다!</strong><br>용기 있는 도전자들의 뜨거운 열정과 함성이 올림피아수영장을 뜨겁게 달굴 것입니다!<br><br>🏊‍♂️ <strong>나도 할 수 있다! 100만원의 주인공이 되어보세요!</strong><br><br>📞 참가 신청 및 문의: 010-4211-5237<br>※ 안전을 위해 구명조끼, 아쿠아슈즈 착용 필수<br>※ 당일 현장 접수도 가능합니다",
+                date: "2025-08-06",
+                views: 0
+            }
+        ];
+
+        // 페이지 데이터
+        const pageData = {
+            intro: {
+                // 2-1번 데이터: 수영장 소개
+                history: {
+                    image: "",
+                    title: "수영장 소개",
+                    content: `
+                        <div class="image-slider" style="position: relative; width: 100%; height: 400px; overflow: hidden; border-radius: 10px; margin-bottom: 20px;">
+                            <div class="slider-track" style="display: flex; width: 300%; height: 100%; animation: slide 9s infinite;">
+                                <img src="maindoor.jpg" style="width: 33.33%; height: 100%; object-fit: cover; object-position: center;">
+                                <img src="maindoor2.jpg" style="width: 33.33%; height: 100%; object-fit: cover; object-position: center;">
+                                <img src="maindoor3.jpg" style="width: 33.33%; height: 100%; object-fit: cover; object-position: center;">
+                            </div>
+                        </div>
+                        <div style="text-align: center; font-size: 1.1rem; line-height: 2; color: #555; padding: 20px;">
+                            <p style="margin-bottom: 15px;">
+                                <strong>1973년 개장</strong> 이래 <strong>50년이 넘는 시간</strong> 동안 양주 장흥 지역 주민들과 함께해온 전통 있는 수영장입니다.
+                            </p>
+                            <p style="margin-bottom: 15px;">
+                                <strong>성인풀</strong>부터 <strong>어린이풀장</strong>, <strong>유아풀</strong>까지 온 가족이 함께 이용할 수 있도록 다양한 시설을 갖추고 있으며,
+                            </p>
+                            <p>
+                                특히 양주 장흥 지역 <strong>최대 규모의 에어바운스</strong>까지 운영하고 있어 아이들에게 더욱 특별한 추억을 선사합니다.
+                            </p>
+                        </div>
+                        <style>
+                        @keyframes slide {
+                            0% { transform: translateX(0); }
+                            33.33% { transform: translateX(-33.33%); }
+                            66.66% { transform: translateX(-66.66%); }
+                            100% { transform: translateX(0); }
+                        }
+                        </style>
+                    `
+                },
+
+                // 2-2번 데이터: 운영 시간표
+                vision: {
+                    image: "schedule.png",
+                    title: "운영 시간표",
+                    content: "⚠️ 날씨에 따라 운영시간이 변경될 수 있습니다."
+                },
+
+                // 2-3번 데이터: 오시는 길 & 주차안내
+                awards: {
+                    image: "map2.jpg",
+                    title: "오시는 길 & 주차안내",
+                    content: `
+                        <div style="text-align: center; margin-bottom: 25px;">
+                            <div style="margin-top: 15px;">
+                                <a href="https://maps.app.goo.gl/n8KJerbtymUquCvTA" target="_blank" 
+                                   style="display: inline-block; padding: 12px 25px; background: #4285f4; color: white; text-decoration: none; border-radius: 25px; font-weight: bold;">
+                                   🗺️ 구글맵에서 길찾기
+                                </a>
+                            </div>
+                        </div>
+                        <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; margin-top: 20px;">
+                            <h3 style="color: #dc3545; margin-bottom: 15px;">📍 주소 정보</h3>
+                            <p style="font-size: 1.1rem; margin-bottom: 10px;"><strong>주소:</strong> 경기도 양주시 장흥면 호국로 176-16</p>
+                            <p style="font-size: 1.1rem; margin-bottom: 20px;"><strong>전화:</strong> 010-4211-5237</p>
+                            
+                            <h3 style="color: #dc3545; margin-bottom: 15px;">🚗 주차 안내</h3>
+                            <p style="font-size: 1.1rem; margin-bottom: 8px;">• 무료 주차장 완비 (100대 주차 가능)</p>
+                            <p style="font-size: 1.1rem; margin-bottom: 8px;">• 대형차량 주차 가능</p>
+                            <p style="font-size: 1.1rem; margin-bottom: 20px;">• 24시간 CCTV 보안 관리</p>
+                            
+                            <h3 style="color: #dc3545; margin-bottom: 15px;">🚌 대중교통</h3>
+                            <p style="font-size: 1.1rem; margin-bottom: 8px;">• 의정부역에서 버스 이용 (약 30분)</p>
+                            <p style="font-size: 1.1rem;">• 장흥면사무소 정류장 하차 후 도보 5분</p>
+                        </div>
+                    `
+                },
+
+                // 2-4번 데이터: 예약 및 문의
+                staff: {
+                    image: "logo.jpg",
+                    title: "예약 및 문의",
+                    content: "<div style='font-size: 1.3rem; line-height: 1.8;'>예약 전화 010-4211-5237<br>문의 가능 시간 오전 8시 ~ 오후 10:30분 까지</div>"
+                }
+            },
+
+            facilities: {
+                // 3-1번 데이터: 평상배치도
+                "layout": {
+                    image: "map3.jpg",
+                    title: "평상배치도",
+                    content: "A, B, C, D, 파고라 존으로 구성되어 있습니다."
+                },
+
+                // 3-2번 데이터: 성인풀
+                "adult-pool": {
+                    image: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&h=600&fit=crop",
+                    title: "성인풀",
+                    content: "25m x 50m 장흥 최대 사이즈와 수심 0.7m ~ 1.7m 까지 깊이로 성인 수영에 최적화된 환경입니다. 성인풀 내에 에어바운스가 설치되어 있어 더욱 즐거운 물놀이가 가능합니다."
+                },
+
+                // 3-3번 데이터: 어린이풀
+                "kids-pool": {
+                    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop",
+                    title: "어린이풀",
+                    content: "15m x 10m, 수심 0.5m로 아이들이 안심하고 즐길 수 있는 사이즈입니다. 지붕형 에어바운스가 설치되어 있어 이용 조건 없이 누구나 자유롭게 즐길 수 있습니다."
+                },
+
+                // 3-4번 데이터: 에어바운스
+                "airbounce": {
+                    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop",
+                    title: "에어바운스",
+                    content: "7단계 코스로 구성된 스릴 넘치는 에어바운스입니다. 안전을 위해 구명조끼와 아쿠아슈즈 착용이 필수이며, 온 가족이 함께 즐길 수 있는 인기 시설입니다."
+                },
+
+                // 3-5번 데이터: 매점
+                "shop": {
+                    image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop",
+                    title: "매점",
+                    content: "튜브, 구명조끼, 아쿠아슈즈 등 수영용품과 불판, 버너 등 바베큐 용품, 그리고 각종 먹거리를 판매하고 있습니다. 필요한 모든 용품을 현장에서 구매하실 수 있어 편리합니다."
+                },
+
+                // 3-6번 데이터: 주차장
+                "parking": {
+                    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
+                    title: "주차장",
+                    content: "총 100대 주차 가능한 넓은 무료 주차장을 운영하고 있습니다. 대형차량도 주차 가능하며, 24시간 CCTV로 안전하게 관리되고 있습니다."
+                }
+            },
+
+            pricing: {
+                // 4-1번 데이터: 입장요금 안내
+                daily: {
+                    image: "price1.jpg",
+                    title: "",
+                    content: ""
+                },
+
+                // 4-2번 데이터: 평상요금 안내
+                monthly: {
+                    image: "price2.jpg",
+                    title: "",
+                    content: ""
+                }
+            }
+        };
+
+        // 네비게이션 활성화 상태 설정 함수
+        function setActiveNav(clickedElement) {
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            clickedElement.classList.add('active');
+        }
+
+        // 페이지 전환 함수
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            document.querySelector('.nav-menu').classList.remove('active');
+
+            if (pageId === 'home') {
+                const navLinks = document.querySelectorAll('.nav-link');
+                navLinks.forEach(link => link.classList.remove('active'));
+                document.querySelector('.nav-link').classList.add('active');
+            }
+
+            // 공지사항 페이지로 이동 시 목록 표시
+            if (pageId === 'notice') {
+                showNoticeList();
+                renderNoticeList();
+            }
+        }
+
+        // 서브페이지 콘텐츠 전환 함수
+        function showContent(page, contentId) {
+            const contentArea = document.getElementById(page + '-content');
+            const data = pageData[page][contentId];
+
+            if (contentId === 'vision') {
+                contentArea.innerHTML = `
+                    <h2>${data.title}</h2>
+                    <img src="${data.image}" alt="${data.title}">
+                    <p>${data.content}</p>
+                `;
+            } else if (contentId === 'awards') {
+                contentArea.innerHTML = `
+                    <h2>${data.title}</h2>
+                    <div>${data.content}</div>
+                `;
+            } else {
+                contentArea.innerHTML = `
+                    <img src="${data.image}" alt="${data.title}">
+                    <h2>${data.title}</h2>
+                    <p>${data.content}</p>
+                `;
+            }
+
+            const sidebarLinks = document.querySelectorAll(`#${page} .sidebar-link`);
+            sidebarLinks.forEach(link => link.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // 공지사항 목록 렌더링
+        function renderNoticeList() {
+            const tbody = document.querySelector('.notice-table tbody');
+            tbody.innerHTML = '';
+
+            noticeData.forEach(notice => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${notice.id}</td>
+                    <td><a href="#" onclick="showNoticeDetail(${notice.id})" style="color: #333; text-decoration: none;">${notice.title}</a></td>
+                    <td>${notice.date}</td>
+                    <td>${notice.views}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // 공지사항 상세보기
+        function showNoticeDetail(id) {
+            const notice = noticeData.find(n => n.id === id);
+            if (!notice) return;
+
+            // 조회수 증가
+            notice.views++;
+
+            document.getElementById('notice-title').textContent = notice.title;
+            document.getElementById('notice-date').textContent = notice.date;
+            document.getElementById('notice-body').innerHTML = notice.content;
+
+            document.querySelector('.notice-list').style.display = 'none';
+            document.getElementById('notice-detail').style.display = 'block';
+        }
+
+        // 공지사항 목록으로 돌아가기
+        function showNoticeList() {
+            document.querySelector('.notice-list').style.display = 'block';
+            document.getElementById('notice-detail').style.display = 'none';
+            renderNoticeList(); // 조회수 업데이트를 위해 다시 렌더링
+        }
+
+        // 팝업 관련 함수들
+        function closePopup() {
+            const popup = document.getElementById('eventPopup');
+            const todayClose = document.getElementById('todayClose');
+
+            if (todayClose && todayClose.checked) {
+                const today = new Date().toDateString();
+                localStorage.setItem('popupClosed', today);
+            }
+            if (popup) {
+                popup.style.display = 'none';
+            }
+        }
+
+        function checkPopupDisplay() {
+            const popup = document.getElementById('eventPopup');
+            if (!popup) return;
+
+            const today = new Date().toDateString();
+            const closedDate = localStorage.getItem('popupClosed');
+
+            if (closedDate === today) {
+                popup.style.display = 'none';
+            } else {
+                popup.style.display = 'flex';
+            }
+        }
+
+        // 햄버거 메뉴 토글
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // 초기화
+        document.addEventListener('DOMContentLoaded', function () {
+            // 팝업 배경 클릭 시 닫기
+            const popup = document.getElementById('eventPopup');
+            if (popup) {
+                popup.addEventListener('click', function (e) {
+                    if (e.target === popup) {
+                        closePopup();
+                    }
+                });
+            }
+
+            // 초기 페이지 표시
+            showPage('home');
+
+            // 팝업 표시 확인
+            checkPopupDisplay();
+        });
+
+        // 페이지 로드 시 팝업 확인
+        window.addEventListener('load', checkPopupDisplay);
+    </script>
+
+
+
+</body>
+
+</html>
